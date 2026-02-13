@@ -16,6 +16,6 @@ def train_model(model, num_epochs, data_loader, param_file_path):
 			optimizer.step()
 			cur_loss += loss.item()
 
-		print(f"epoch: {e}, loss: {cur_loss}")
+		print(f"epoch: {e+1}, loss: {cur_loss}")
 
 	torch.save(model.state_dict(), param_file_path)
