@@ -2,7 +2,7 @@ import torch
 import pandas as pd
 import numpy as np
 
-class AllData(torch.utils.data.Dataset):
+class TrainData(torch.utils.data.Dataset):
 	def __init__(self):
 		self.covid_data_path = "./Covid_19_Data.csv"
 		self.df = pd.read_csv(self.covid_data_path)
