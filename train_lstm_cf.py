@@ -1,5 +1,6 @@
 from load_data import TrainData
 from lstm import LSTM
+from cf import CF
 from train_model import train_model
 from torch.utils.data import DataLoader
 import time
