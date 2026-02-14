@@ -2,9 +2,11 @@
 
 ### How to run the code:
 
+1. Download data from https://www.kaggle.com/datasets/anandhuh/covid19-confirmed-cases-kerala and name file as Covid_19_Data.csv in current directory.
 
+2. Run python train_lstm_cf.py in current directory. The parameters for the trained LSTM and CF models will be saved in lstm.param and cf.param files respectively.
 
-### Motivation for this model:
+### Motivation for the Convolutional Forecasting (CF) model:
 
 Why normalize the data? To eliminate dependence on the units of the data the model is trained on to generalize its predictive ability.
 
