@@ -14,4 +14,7 @@ Why convolution? I was inspired by the use of convolutions in image recognition 
 
 ### Results so far:
 
-For 20 epochs, the LSTM model trained for ~78 seconds. The training loss for the LSTM model was still decreasing. For 20 epochs, the CF model trained for ~2.5 seconds. The training loss for the CF model decreased until epoch 10 and then started increasing. These results are only for the COVID data.
+For 20 epochs, the LSTM model trained for ~77 seconds. The training loss for the LSTM model was still decreasing. For 20 epochs, the CF model trained for ~2.5 seconds. The training loss for the CF model was still decreasing. These results are only for the COVID data.
+
+#### Sample output (some epochs not displayed):
+<img width="527" height="391" alt="Screenshot 2026-02-14 at 1 43 46 AM" src="https://github.com/user-attachments/assets/63e581a5-a71d-4d3b-af70-1d9d428ef143" />
