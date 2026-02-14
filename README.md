@@ -1,6 +1,10 @@
 # Forecasting-Project-v2
 
-Motivation for this model:
+## How to run the code:
+
+
+
+## Motivation for this model:
 
 Why normalize the data? To eliminate dependence on the units of the data the model is trained on to generalize its predictive ability.
 
