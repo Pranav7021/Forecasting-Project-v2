@@ -6,6 +6,8 @@
 
 2. Run python train_lstm_cf.py in current directory. The parameters for the trained LSTM and CF models will be saved in lstm.param and cf.param files respectively.
 
+3. Run python test_lstm_cf.py in current directory. Note: currently, the test is only on the data the models were trained on. I will add testing data shortly.
+
 ### Motivation for the Convolutional Forecasting (CF) model:
 
 Why normalize the data? To eliminate dependence on the units of the data the model is trained on to generalize its predictive ability.
@@ -14,7 +16,8 @@ Why convolution? I was inspired by the use of convolutions in image recognition 
 
 ### Results so far:
 
-For 20 epochs, the LSTM model trained for ~77 seconds. The training loss for the LSTM model was still decreasing. For 20 epochs, the CF model trained for ~2.5 seconds. The training loss for the CF model was still decreasing. These results are only for the COVID data.
+For 40 epochs, the LSTM model trained for ~163 s. The training loss for the LSTM model was still decreasing. For 75 epochs, the CF model trained for ~25 seconds. The training loss for the CF model was still decreasing. These results are only for the COVID data.
 
-#### Sample output (some epochs not displayed):
-<img width="527" height="391" alt="Screenshot 2026-02-14 at 1 43 46 AM" src="https://github.com/user-attachments/assets/63e581a5-a71d-4d3b-af70-1d9d428ef143" />
+#### Sample test output:
+
+<img width="471" height="61" alt="Screenshot 2026-02-14 at 1 42 48 PM" src="https://github.com/user-attachments/assets/b834fb6b-2ab0-4df3-ac6a-b41db9dabb1c" />
