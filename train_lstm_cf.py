@@ -13,7 +13,7 @@ print(f"***Initialized LSTM with {lstm.num_param} parameters***")
 
 # train the LSTM and save the parameters in a file
 stime = time.perf_counter()
-train_model(lstm, 20, covid_data, "trial_lstm.param")
+train_model(lstm, 20, covid_data, "lstm.param")
 etime = time.perf_counter()
 
 print(f"***LSTM finished training in {etime-stime}s***")
@@ -24,7 +24,7 @@ print(f"***Initialized CF with {cf.num_param} parameters***")
 
 # train the CF and save the parameters in a file
 stime = time.perf_counter()
-train_model(cf, 20, covid_data, "trial_cf.param")
+train_model(cf, 20, covid_data, "cf.param")
 etime = time.perf_counter()
 
 print(f"***CF finished training in {etime-stime}s***")
