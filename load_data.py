@@ -4,7 +4,7 @@ import numpy as np
 
 class TrainData(torch.utils.data.Dataset):
 	def __init__(self):
-		self.covid_data_path = "./Covid_19_Data.csv"
+		self.covid_data_path = "./data/Covid_19_Data.csv"
 		self.df = pd.read_csv(self.covid_data_path)
 		
 		self.confirmed = pd.Series.to_numpy(self.df["Confirmed"])
