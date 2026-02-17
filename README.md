@@ -23,3 +23,7 @@ For 40 epochs, the LSTM model trained for ~163 s. The training loss for the LSTM
 #### Sample test output:
 
 <img width="468" height="62" alt="Screenshot 2026-02-15 at 11 08 29 AM" src="https://github.com/user-attachments/assets/db90987b-381e-46eb-90ec-9138548a19d0" />
+
+### Data Sources:
+
+COVID data: https://www.kaggle.com/datasets/anandhuh/covid19-confirmed-cases-kerala
