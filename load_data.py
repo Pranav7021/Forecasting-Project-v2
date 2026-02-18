@@ -5,16 +5,26 @@ import numpy as np
 class TrainData(torch.utils.data.Dataset):
 	def __init__(self):
 		self.covid_data_path = "./data/Covid_19_Data.csv"
-		self.df = pd.read_csv(self.covid_data_path)
-		
-		self.confirmed = pd.Series.to_numpy(self.df["Confirmed"])
+		self.covid_df = pd.read_csv(self.covid_data_path)
+		self.aapl_data_path = "./data/AAPL.csv"
+    self.aapl_df = pd.read_csv(self.aapl_data_path)
+	
+		self.confirmed = pd.Series.to_numpy(self.covid_df["Confirmed"])
 		self.confirmed = (self.confirmed - np.mean(self.confirmed)) / np.std(self.confirmed)
+		self.close = pd.Series.to_numpy(self.aapl_df["close"])
+    self.close = (self.close - np.mean(self.close)) / np.std(self.close)
+
 		self.data_x = []
 		self.data_y = []
+		self.seq_len = 100
 
-		for i in range(len(self.confirmed) - 200):
-			self.data_x.append(self.confirmed[i: i+200])
-			self.data_y.append(self.confirmed[i+200])
+		for i in range(len(self.confirmed) - self.seq_len):
+			self.data_x.append(self.confirmed[i: i+self.seq_len])
+			self.data_y.append(self.confirmed[i+self.seq_len])
+
+		for i in range(len(self.close) - self.seq_len):
+      self.data_x.append(self.close[i: i+self.seq_len])
+      self.data_y.append(self.close[i+self.seq_len])
 
 		self.data_x = np.array(self.data_x, dtype=np.float32)
 		self.data_y = np.array(self.data_y, dtype=np.float32)
