@@ -6,9 +6,11 @@ cf.py and lstm.py contain the implementation of my Convolutional Forecasting (CF
 
 ### How to run the code:
 
-1. Run python train_lstm_cf.py in current directory. The parameters for the trained LSTM and CF models will be saved in lstm.param and cf.param files respectively.
+1. Download historical price data for AAPL and NVDA stocks from TradingView.
 
-2. Run python test_lstm_cf.py in current directory. Note: currently, the test is only on the data the models were trained on. I will add testing data shortly.
+2. Run python train_lstm_cf.py in current directory. The parameters for the trained LSTM and CF models will be saved in lstm.param and cf.param files respectively.
+
+3. Run python test_lstm_cf.py in current directory. Note: currently, the test is only on the data the models were trained on. I will add testing data shortly.
 
 ### Motivation for the CF model:
 
@@ -31,3 +33,5 @@ For 40 epochs, the LSTM model trained for ~163 s. The training loss for the LSTM
 ### Data Sources:
 
 COVID data: https://www.kaggle.com/datasets/anandhuh/covid19-confirmed-cases-kerala
+
+AAPL and NVDA stock data: TradingView
