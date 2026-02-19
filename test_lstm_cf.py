@@ -1,5 +1,5 @@
 import torch
-from load_data import TrainData
+from load_data import StockData
 from lstm import LSTM
 from cf import CF
 from train_model import train_model
