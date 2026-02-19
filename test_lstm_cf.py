@@ -32,27 +32,27 @@ combined_abs_loss = 0
 with torch.no_grad():
 	for batch_num, (inputs, act_outputs) in enumerate(stock_data):
 		stime = time.perf_counter()
-    lstm_out = lstm(inputs)
-    etime = time.perf_counter()
-    lstm_time += etime-stime
-    lstm_loss = abs_loss(lstm_out, act_outputs)
-    lstm_abs_loss += lstm_loss
+		lstm_out = lstm(inputs)
+		etime = time.perf_counter()
+		lstm_time += etime-stime
+		lstm_loss = abs_loss(lstm_out, act_outputs)
+		lstm_abs_loss += lstm_loss
 
-    stime = time.perf_counter()
-    cf_out = cf(inputs)
-    etime = time.perf_counter()
-    cf_time += etime-stime
-    cf_loss = abs_loss(cf_out, act_outputs)
-    cf_abs_loss += cf_loss
+		stime = time.perf_counter()
+		cf_out = cf(inputs)
+		etime = time.perf_counter()
+		cf_time += etime-stime
+		cf_loss = abs_loss(cf_out, act_outputs)
+		cf_abs_loss += cf_loss
 
-    combined_out = (lstm_out+cf_out)/2
-    combined_loss = abs_loss(combined_out, act_outputs)
-    combined_abs_loss += combined_loss
+		combined_out = (lstm_out+cf_out)/2
+		combined_loss = abs_loss(combined_out, act_outputs)
+		combined_abs_loss += combined_loss
 
-    if cf_loss < lstm_loss:
-      cf_better += 1
-    else:
-      lstm_better += 1
+		if cf_loss < lstm_loss:
+			cf_better += 1
+		else:
+			lstm_better += 1
 
 print(f"LSTM took {lstm_time}s overall for inference")
 print(f"CF took {cf_time}s overall for inference")
