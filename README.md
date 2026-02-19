@@ -1,12 +1,16 @@
 # Forecasting-Project-v2
 
+### Structure of code:
+
+cf.py and lstm.py contain the implementation of my Convolutional Forecasting (CF) and the LSTM models respectively. load_data.py loads the training and testing data. train_model.py implements a train_model function which takes a model and trains it for some number of epochs. train_lstm_cf.py trains both the LSTM and CF models and saves their parameters, using train_model.
+
 ### How to run the code:
 
 1. Run python train_lstm_cf.py in current directory. The parameters for the trained LSTM and CF models will be saved in lstm.param and cf.param files respectively.
 
 2. Run python test_lstm_cf.py in current directory. Note: currently, the test is only on the data the models were trained on. I will add testing data shortly.
 
-### Motivation for the Convolutional Forecasting (CF) model:
+### Motivation for the CF model:
 
 Why normalize the data? To eliminate dependence on the units of the data the model is trained on to generalize its predictive ability.
 
