@@ -4,6 +4,13 @@ import numpy as np
 
 class TrainData(torch.utils.data.Dataset):
 	def __init__(self):
+		if torch.cuda.is_available():
+			device = torch.device("cuda")
+		elif torch.backends.mps.is_available():
+			device = torch.device("mps")
+		else:
+			device = torch.device("cpu")
+
 		self.covid_data_path = "./data/Covid_19_Data.csv"
 		self.covid_df = pd.read_csv(self.covid_data_path)
 		self.aapl_data_path = "./data/AAPL.csv"
@@ -27,8 +34,10 @@ class TrainData(torch.utils.data.Dataset):
 			self.data_y.append(self.close[i+self.seq_len])
 
 		self.data_x = np.array(self.data_x, dtype=np.float32)
+		self.data_x = torch.tensor(self.data_x, device=device)
 		self.data_y = np.array(self.data_y, dtype=np.float32)
 		self.len = np.size(self.data_y)
+		self.data_y = torch.tensor(self.data_y, device=device)
 		print(f"***Initialized training dataset with {self.len} examples***")
 
 	def __len__(self):
