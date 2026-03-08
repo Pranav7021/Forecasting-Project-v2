@@ -20,15 +20,7 @@ Why convolution? I was inspired by the use of convolutions in image recognition 
 
 ### Results so far:
 
-For 40 epochs, the LSTM model trained for ~163 s. The training loss for the LSTM model was still slightly decreasing. For 75 epochs, the CF model trained for ~25 seconds. The training loss for the CF model was still decreasing. These results are only for the COVID data, with training done on CPU only.
-
-#### Sample training output (some epochs omitted):
-
-<img width="472" height="317" alt="Screenshot 2026-02-15 at 11 07 43 AM" src="https://github.com/user-attachments/assets/c23e35b6-07ad-4339-8160-6c7d806cdf0b" />
-
-#### Sample test output:
-
-<img width="468" height="62" alt="Screenshot 2026-02-15 at 11 08 29 AM" src="https://github.com/user-attachments/assets/db90987b-381e-46eb-90ec-9138548a19d0" />
+For 100 epochs, the LSTM model trained for ~482 s. For 60 epochs, the CF model trained for ~214 seconds. Training was done on an Apple M4 chip. On stock testing data (780 examples), the LSTM took ~0.35s overall for inference while the CF took ~0.23s. The CF's total absolute loss was 66.8 and the LSTM's total absolute loss was 63.5. The CF was better on ~46.9% of the testing data. 
 
 ### Data Sources:
 
