@@ -10,7 +10,7 @@ cf.py and lstm.py contain the implementation of my Convolutional Forecasting (CF
 
 2. Run python train_lstm_cf.py in current directory. The parameters for the trained LSTM and CF models will be saved in lstm.param and cf.param files respectively.
 
-3. Run python test_lstm_cf.py in current directory. Note: currently, the test is only on the data the models were trained on. I will add testing data shortly.
+3. Run python test_lstm_cf.py in current directory.
 
 ### Motivation for the CF model:
 
@@ -20,7 +20,7 @@ Why convolution? I was inspired by the use of convolutions in image recognition 
 
 ### Results so far:
 
-For 100 epochs, the LSTM model trained for ~482 s. For 60 epochs, the CF model trained for ~214 seconds. Training was done on an Apple M4 chip. On stock testing data (780 examples), the LSTM took ~0.35s overall for inference while the CF took ~0.23s. The CF's total absolute loss was 66.8 and the LSTM's total absolute loss was 63.5. The CF was better on ~46.9% of the testing data. 
+For 100 epochs, the LSTM model trained for ~482 s. For 60 epochs, the CF model trained for ~214 seconds. Training was done on an Apple M4 chip. On stock testing data (780 examples), the LSTM took ~0.35s overall for inference while the CF took ~0.23s. The CF's total absolute loss was 66.8 and the LSTM's total absolute loss was 63.5 (standard deviations). The CF was better on ~46.9% of the testing data. 
 
 ### Data Sources:
 
