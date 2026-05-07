@@ -1,10 +1,17 @@
 import torch
 from load_data import StockData
 from lstm import LSTM
-from cf import CF
+from pecnn import CF
 from train_model import train_model
 from torch.utils.data import DataLoader
 import time
+
+if torch.cuda.is_available():
+	device = torch.device("cuda")
+elif torch.backends.mps.is_available():
+	device = torch.device("mps")
+else:
+	device = torch.device("cpu")
 
 stock_data_obj = StockData()
 stock_data = DataLoader(stock_data_obj, batch_size=1, shuffle=False)
@@ -13,11 +20,13 @@ stock_data = DataLoader(stock_data_obj, batch_size=1, shuffle=False)
 lstm_param_path = "./lstm.param"
 lstm = LSTM(1, 30, 1, True, 100)
 lstm.load_state_dict(torch.load(lstm_param_path))
+lstm = lstm.to(device)
 
 # initialize CF with saved params
 cf_param_path = "./cf.param"
-cf = CF()
+cf = CF(3, 32)
 cf.load_state_dict(torch.load(cf_param_path))
+cf = cf.to(device)
 
 lstm_time = 0
 cf_time = 0
@@ -28,6 +37,10 @@ lstm_better = 0
 cf_abs_loss = 0
 lstm_abs_loss = 0
 combined_abs_loss = 0
+
+lstm_da = 0
+cf_da = 0
+num_examples = stock_data.__len__()
 
 with torch.no_grad():
 	for batch_num, (inputs, act_outputs) in enumerate(stock_data):
@@ -54,8 +67,21 @@ with torch.no_grad():
 		else:
 			lstm_better += 1
 
+		if act_outputs <= 0:
+			if cf_out <= 0:
+				cf_da += 1
+			if lstm_out <= 0:
+				lstm_da += 1
+		else:
+			if cf_out > 0:
+				cf_da += 1
+			if lstm_out > 0:
+				lstm_da += 1
+
 print(f"LSTM took {lstm_time}s overall for inference")
 print(f"CF took {cf_time}s overall for inference")
 print(f"CF total absolute loss: {cf_abs_loss} and LSTM total absolute loss: {lstm_abs_loss}")
 print(f"Combined total absolute loss: {combined_abs_loss}")
 print(f"CF was better on {cf_better/(cf_better+lstm_better)*100}% of the data")
+print(f"CF was directionally correct on {cf_da/num_examples*100}% of the data")
+print(f"LSTM was directionally correct on {lstm_da/num_examples*100}% of the data")
