@@ -25,5 +25,3 @@ The LSTM trained for 50 epochs in 787 s. The CF trained for 10 epochs in 527 s. 
 ### Data Sources:
 
 Historical price data: TradingView
-
-COVID data: https://www.kaggle.com/datasets/anandhuh/covid19-confirmed-cases-kerala
