@@ -1,7 +1,7 @@
 import torch
 from load_data import StockData
 from lstm import LSTM
-from pecnn import CF
+from cf import CF
 from train_model import train_model
 from torch.utils.data import DataLoader
 import time
