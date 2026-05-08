@@ -38,10 +38,6 @@ cf_abs_loss = 0
 lstm_abs_loss = 0
 combined_abs_loss = 0
 
-lstm_da = 0
-cf_da = 0
-num_examples = stock_data.__len__()
-
 with torch.no_grad():
 	for batch_num, (inputs, act_outputs) in enumerate(stock_data):
 		stime = time.perf_counter()
@@ -67,21 +63,8 @@ with torch.no_grad():
 		else:
 			lstm_better += 1
 
-		if act_outputs <= 0:
-			if cf_out <= 0:
-				cf_da += 1
-			if lstm_out <= 0:
-				lstm_da += 1
-		else:
-			if cf_out > 0:
-				cf_da += 1
-			if lstm_out > 0:
-				lstm_da += 1
-
 print(f"LSTM took {lstm_time}s overall for inference")
 print(f"CF took {cf_time}s overall for inference")
 print(f"CF total absolute loss: {cf_abs_loss} and LSTM total absolute loss: {lstm_abs_loss}")
 print(f"Combined total absolute loss: {combined_abs_loss}")
 print(f"CF was better on {cf_better/(cf_better+lstm_better)*100}% of the data")
-print(f"CF was directionally correct on {cf_da/num_examples*100}% of the data")
-print(f"LSTM was directionally correct on {lstm_da/num_examples*100}% of the data")
